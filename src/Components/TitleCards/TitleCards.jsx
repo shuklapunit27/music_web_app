@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import "./TitleCards.css";
 import cards_data from "../../assets/assets/cards/Cards_data.js";
 
-const TitleCards = () => {
+const TitleCards = ({ title, category }) => {
   const cardsRef = useRef();
 
   const handleWheel = (event) => {
@@ -12,13 +12,23 @@ const TitleCards = () => {
 
   useEffect(() => {
     cardsRef.current.addEventListener("wheel", handleWheel);
-    return () => {
-      currentRef.removeEventListener("wheel", handleWheel);
-    };
+    // return () => {
+    //   cardsRef.current.removeEventListener("wheel", handleWheel);
+    // };
+    const currentRef = cardsRef.current;
+
+    // if (currentRef) {
+    //   currentRef.addEventListener("wheel", handleWheel);
+    // }
+
+    // return () => {
+    //   if (currentRef) {
+    //     currentRef.removeEventListener("wheel", handleWheel);
+    //   }
   }, []);
   return (
     <div className="title-cards">
-      <h2>Popular on Netflix</h2>
+      <h2>{title ? title : "Popular on Netflix"}</h2>
       <div className="card-list" ref={cardsRef}>
         {cards_data.map((card, index) => {
           return (
