@@ -3,9 +3,10 @@ import "./TitleCards.css";
 import cards_data from "../../assets/assets/cards/Cards_data.js";
 import { Link } from "react-router-dom";
 
-//  http://www.omdbapi.com/?i=tt3896198&apikey=b0abff41
-
+// const API_KEY = import.meta.env.VITE_API_KEY;
 const API_KEY = "b0abff41";
+console.log("import.meta.env", import.meta.env);
+console.log("API_KEY", import.meta.env.VITE_API_KEY);
 
 const TitleCards = ({ title, category = "avengers" }) => {
   const cardsRef = useRef();
